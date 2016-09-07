@@ -1,0 +1,24 @@
+" Vim dictionary for CDO command autocompletion
+" Language: CDO
+" Updated: Tue Sept  6 11:19:31 GMT+1 2016
+" Author: Aaron Spring aaron.spring@mpimet.mpg.de
+" cdo keywords
+sco212  
+alkali 
+phosph 
+oxygen 
+    ano3 
+  silica 
+     doc 
+     det 
+      hi 
+     co3 
+     phy 
+     zoo 
+    calc 
+    opal 
+    an2o 
+     dms 
+    iron 
+    aksp 
+caco3_diss 

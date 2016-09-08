@@ -1,7 +1,6 @@
 " set cdo syntax on .sh files
-au BufRead,BufNewFile *.sh set filetype=cdo
-au! Syntax newlang source $VIM/cdo.vim 
 syntax on
+set complete+=k
 
 " autointend
 set ai
@@ -18,7 +17,7 @@ set completeopt=longest,menuone
 "set completeopt=preview
 
 " to include keywords with comma separation
-set iskeyword+=,
+"set iskeyword+=,
 
 " autocompletion for file on key <F7>
 set autochdir

@@ -5,6 +5,7 @@ CDO_lazy_vim README
 
 If you are using vi/vim/gvim for scripting with cdo, you can sometimes hardly remember cdo commands or you are just too lazy to type out "sellonlatbox" all the time, this might be something for you.
 
+![animation]( cdo_lazy_vim.gif )
 Configuration instructions
 --------------------------
 For completion: <br>

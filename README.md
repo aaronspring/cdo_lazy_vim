@@ -19,7 +19,7 @@ set completeopt=longest,menuone
 
 Optional completion: <br>
 1. If you wish some dictionaries, eg. those for other model variables just comment those in in".vim/ftdetect/cdo.vim" <br>
-2. If you want to use <Tab> for auto-completion like in your shell, add those lines to your .vimrc <br>
+2. If you want to use &lt;Tab> for auto-completion like in your shell, add those lines to your .vimrc <br>
 ```
 " Use TAB to complete when typing words, else inserts TABs as usual.
 " Uses dictionary and source files to find matching words to complete.
@@ -38,7 +38,7 @@ endfunction
 :inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 ```
 Source: http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion <br>
-The usual <Tab> command will still be executed when no completion is feasable, eg. in the beginning of (empty) lines <br>
+The usual &lt;Tab> command will still be executed when no completion is feasable, eg. in the beginning of (empty) lines <br>
 3. If you fancy other auto-completion setting, play with the line
 ```
 set complete=longest,menuone

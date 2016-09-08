@@ -3,22 +3,31 @@ in progress...
 CDO_lazy_vim README
 ===================
 
-If you are using vi/vim/gvim for scripting with cdo, you can sometimes hardly remember cdo commands or you are just too lazy to type out sellonlatbox all the time, this might be something for you.
+If you are using vi/vim/gvim for scripting with cdo, you can sometimes hardly remember cdo commands or you are just too lazy to type out "sellonlatbox" all the time, this might be something for you.
 
 Configuration instructions
 --------------------------
 For completion: <br>
-1. Copy all desired dictionary files but definately including ".vim/dictionary/cdo.dic" to "~/.vim/dictionary" <br>
-2. Copy the file ".vim/ftdetect/cdo.vim" to "~/.vim/ftdetect" <br>
-3. Add the following line to your .vimrc file "~/.vimrc" <br>
+1. Copy dictionary file ".vim/dictionary/cdo.dic" to "~/.vim/dictionary" <br>
+2. Copy all desired variable dictionary files "*.dic" from this repositories ".vim/dictionary" to "~/.vim/dictionary" <br>
+3. Copy the file ".vim/ftdetect/cdo.vim" to "~/.vim/ftdetect" to name the dictionaries that should be associated with a certain filetype. Default: cdo.dic associated with *.sh <br>
+4. Add the following lines to your .vimrc file "~/.vimrc" to include dictionaries for completions <br>
 ```
+set complete+=k
 set completeopt=longest,menuone
 ```
 
 Optional completion: <br>
-1. If you don't need some dictionaries, eg. those of some other model variables just comment those out in ".vim/ftdetect/cdo.vim" <br>
+1. If you wish some dictionaries, eg. those for other model variables just comment those in in".vim/ftdetect/cdo.vim" <br>
 2. If you want to use <Tab> for auto-completion like in your shell, add those lines to your .vimrc <br>
 ```
+" Use TAB to complete when typing words, else inserts TABs as usual.
+" Uses dictionary and source files to find matching words to complete.
+" "See help completion for source,
+" Note: usual completion is on <C-n> but more trouble to press all the time.
+" Never type the same word twice and maybe learn a new spellings!
+" Use the Linux dictionary when spelling is in doubt.
+" Window users can copy the file to their machine.
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
     return "\<C-N>"
@@ -59,7 +68,7 @@ Hit another &lt;Ctrl-N> go get the first shown match
 ```
 cdo sellevel
 ```
-hit another &lt;Ctrl-N> to choose the next match or move down with arrow keys and hit <Enter> for your choice 
+Hit another &lt;Ctrl-N> to choose the next match or move down with arrow keys and hit <Enter> for your choice 
 
 
 
@@ -74,25 +83,36 @@ Known bugs
 
 Contact information
 -------------------
-Aaron Spring
-Bundesstraße 53
-ZMAW Room 229
-aaron.spring@mpimet.mpg.de
+Aaron Spring <br> Bundesstraße 53 <br> ZMAW Room 229 <br> aaron.spring@mpimet.mpg.de <br> <br> 
+Looking forward to receiving your questions, comments or wishes
 
 
 Changelog
 ---------
 * 0.1: basic auto-complete function based on cdoCompletion.bash as of 2016/09/06
-* 0.2: some MPI-ESM variables included for HAMOCC 2d, 3d and Sedi, MPIOM 2d, 3d and ECHAM6 BOT, LOG, ... checkout .vim/dictionary
+* 0.2: some MPI-ESM variables included for HAMOCC: 2d, 3d and sediment; MPIOM: 2d, 3d and ECHAM6: BOT, LOG, ...; checkout  this repositories ".vim/dictionary"
+
+Dictionary Versions
+-------------------
+* cdo dictionary based on cdoCompletion.bash as of 2016/09/06: https://code.zmaw.de/projects/cdo/repository/revisions/master/entry/contrib/cdoCompletion.bash
+* HAMOCC, MPIOM and ECHAM6 dictionaries based on variables from MPI-ESM LR Large Ensemble n=100 runs <br>
+  ```
+  // global attributes:
+		:CDI = "Climate Data Interface version 1.6.4rc1 (http://code.zmaw.de/projects/cdi)" ;
+		:Conventions = "CF-1.4" ;
+		:MPIOM = "$Revision: mpiom/trunk 3749 $" ;
+  ``` <br>
+on stored on mistral:/work/mh1007/mpiesm1/experiments/
 
 Working on
 ----------
 * proper syntax highlighting
 * more description in completion popup, eg. syntax or variable longname
+* anything else needed?
 
 Credits and acknowledgements
 ----------------------------
 * Uwe Schulzweida, creator of cdo
-* Pierre X, the dude who did this for ncl and made me think about this 
+* Prince K Xavier, the dude who setup auto-completion for NCL and made me think about this 
 
 

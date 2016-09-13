@@ -47,6 +47,12 @@ set complete=longest,menuone
 The current setting completes up to the last common string and then shows a menu. Other options are listed in the vim help or http://vimdoc.sourceforge.net/htmldoc/options.html#'completeopt' <br>
 
 <br><br>
+You can also clone this repository in your home directory:
+```
+git clone https://github.com/aaronspring/cdo_lazy_vim
+```
+However this might overwrite pre-existing settings.
+<br>
 
 For syntax highlighting: <br>
 1. coming soon <br>

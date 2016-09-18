@@ -10,7 +10,7 @@ If you are using vi/vim/gvim for scripting with cdo, you can sometimes hardly re
 Configuration instructions
 --------------------------
 
-* Add the lines to your "add_cdo_complete_to_your_vimrc" to your "~/.vimrc" to include the complete function <br>
+* Add the lines of "add_cdo_complete_to_your_vimrc" to your "~/.vimrc" to include the complete function <br>
 ```
 cat add_cdo_complete_to_your_vimrc >> ~/.vimrc
 ```

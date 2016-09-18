@@ -53,7 +53,7 @@ Operating instructions
 ----------------------
 Start typing your desired cdo command and hit &lt;Control-X><&lt;Control-U>
 ```
-cdo sell<Ctrl-X><&lt;Control-U>
+cdo sell<Ctrl-X><Ctrl-U>
 ```
 Get the following autocompletion options 
 ```

@@ -16,7 +16,8 @@ cat add_cdo_complete_to_your_vimrc >> ~/.vimrc
 ```
 
 Optional: <br>
-1. Variable completion: Set a file path and enable vars_completion in your ".vimrc"  
+1. Variable completion: Set a file path and enable vars_completion in your ".vimrc" <br>
+![animation]( vars_completion.gif ) <br>
 2. If you want to use &lt;Tab> for auto-completion like in your shell, add those lines to your .vimrc <br> FIXME: Doesnt replace <C-U><C-U> yet, but only <C-N>
 ```
 " Use TAB to complete when typing words, else inserts TABs as usual.
@@ -102,4 +103,9 @@ Credits and acknowledgements
 * Uwe Schulzweida, creator of cdo
 * Prince K Xavier, the dude who set up auto-completion for NCL and made me think about this 
 * Ralf Müller
+ 
+
+Sister project
+--------------
+* same stuff for NCL: https://github.com/aaronspring/ncl_lazy_vim
 

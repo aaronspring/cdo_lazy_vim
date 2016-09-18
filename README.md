@@ -51,7 +51,7 @@ For syntax highlighting: <br>
 
 Operating instructions
 ----------------------
-Start typing your desired cdo command and hit &lt;Control-X><&lt;Control-U>
+Start typing your desired cdo command and hit &lt;Control-X>&lt;Control-U>
 ```
 cdo sell<Ctrl-X><Ctrl-U>
 ```

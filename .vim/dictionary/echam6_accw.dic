@@ -1,8 +1,0 @@
- 160  runoff        surface runoff and drainage [kg m-2 s-1]
- 161  drain         drainage [kg m-2 s-1]
- 206  grndflux      surface ground heat flux
- 215  rogl          glacier runoff [kg m-2 s-1]
- 218  snmel         snow melt [kg m-2 s-1]
- 221  apmegl        P-E over land ice [kg m-2 s-1]
- 222  snacl         snow accumulation over land [kg m-2 s-1]
- 228  sodif         diffusivity of soil and land ice [m^2/s]

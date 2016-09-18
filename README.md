@@ -5,22 +5,19 @@ CDO_lazy_vim README
 
 If you are using vi/vim/gvim for scripting with cdo, you can sometimes hardly remember cdo commands or you are just too lazy to type out "sellonlatbox" all the time, this might be something for you.
 
-![animation]( cdo_lazy_vim.gif )
+![animation]( cdo_completion.gif )
+
 Configuration instructions
 --------------------------
-For completion: <br>
-1. Copy dictionary file ".vim/dictionary/cdo.dic" to "~/.vim/dictionary" <br>
-2. Copy all desired variable dictionary files "*.dic" from this repositories ".vim/dictionary" to "~/.vim/dictionary" <br>
-3. Copy the file ".vim/ftdetect/cdo.vim" to "~/.vim/ftdetect" to name the dictionaries that should be associated with a certain filetype. Default: cdo.dic associated with *.sh <br>
-4. Add the following lines to your .vimrc file "~/.vimrc" to include dictionaries for completions <br>
+
+* Add the lines to your "add_cdo_complete_to_your_vimrc" to your "~/.vimrc" to include the complete function <br>
 ```
-set complete+=k
-set completeopt=longest,menuone
+cat add_cdo_complete_to_your_vimrc >> ~/.vimrc
 ```
 
-Optional completion: <br>
-1. If you wish some dictionaries, eg. those for other model variables just comment those in in".vim/ftdetect/cdo.vim" <br>
-2. If you want to use &lt;Tab> for auto-completion like in your shell, add those lines to your .vimrc <br>
+Optional: <br>
+1. Variable completion: Set a file path and enable vars_completion in your ".vimrc"  
+2. If you want to use &lt;Tab> for auto-completion like in your shell, add those lines to your .vimrc <br> FIXME: Doesnt replace <C-U><C-U> yet, but only <C-N>
 ```
 " Use TAB to complete when typing words, else inserts TABs as usual.
 " Uses dictionary and source files to find matching words to complete.
@@ -46,12 +43,6 @@ set complete=longest,menuone
 ```
 The current setting completes up to the last common string and then shows a menu. Other options are listed in the vim help or http://vimdoc.sourceforge.net/htmldoc/options.html#'completeopt' <br>
 
-<br><br>
-You can also clone this repository in your home directory:
-```
-git clone https://github.com/aaronspring/cdo_lazy_vim
-```
-However this might overwrite pre-existing settings.
 <br>
 
 For syntax highlighting: <br>
@@ -60,18 +51,19 @@ For syntax highlighting: <br>
 
 Operating instructions
 ----------------------
-Start typing your desired cdo command and hit &lt;Control-N>
+Start typing your desired cdo command and hit &lt;Control-X><&lt;Control-U>
 ```
-cdo sell<Ctrl-N>
+cdo sell<Ctrl-X><&lt;Control-U>
 ```
 Get the following autocompletion options 
 ```
-sellevel                /..path..to..dic-file/cdo.dic
-sellevidx               /..path..to..dic-file/cdo.dic
-sellonlatbox            /..path..to..dic-file/cdo.dic
-selltype                /..path..to..dic-file/cdo.dic
+sellevel                sellevel description
+sellevidx               sellevidx description
+sellonlatbox            sellonlatbox description
+selltype                selltype description
+...
 ```
-Hit another &lt;Ctrl-N> go get the first shown match
+Hit &lt;Ctrl-N> go get the first shown match
 ```
 cdo sellevel
 ```
@@ -96,30 +88,18 @@ Looking forward to receiving your questions, comments or wishes
 
 Changelog
 ---------
-* 0.1: basic auto-complete function based on cdoCompletion.bash as of 2016/09/06
-* 0.2: some MPI-ESM variables included for HAMOCC: 2d, 3d and sediment; MPIOM: 2d, 3d and ECHAM6: BOT, LOG, ...; checkout  this repositories ".vim/dictionary"
-
-Dictionary Versions
--------------------
-* cdo dictionary based on cdoCompletion.bash as of 2016/09/06: https://code.zmaw.de/projects/cdo/repository/revisions/master/entry/contrib/cdoCompletion.bash
-* HAMOCC, MPIOM and ECHAM6 dictionaries based on variables from MPI-ESM LR Large Ensemble n=100 runs <br>
-  ```
-  // global attributes:
-		:CDI = "Climate Data Interface version 1.6.4rc1 (http://code.zmaw.de/projects/cdi)" ;
-		:Conventions = "CF-1.4" ;
-		:MPIOM = "$Revision: mpiom/trunk 3749 $" ;
-  ``` <br>
-on stored on mistral:/work/mh1007/mpiesm1/experiments/
+* v0.1: basic auto-complete function based on cdoCompletion.bash as of 2016/09/06
+* v0.2: some MPI-ESM variables included for HAMOCC: 2d, 3d and sediment; MPIOM: 2d, 3d and ECHAM6: BOT, LOG, ...; checkout  this repositories ".vim/dictionary"
+* v1.0: completly new approach: uses all 'cdo --operators' listings installed on your machine, requires cdo-1.7.1 or later, also completes variables gathered by 'cdo vardes files', requires '*.sh' files, variable_completion and cdo_completion can be enabled or disabled in .vimrc 
 
 Working on
 ----------
 * proper syntax highlighting
-* more description in completion popup, eg. syntax or variable longname
 * anything else needed?
 
 Credits and acknowledgements
 ----------------------------
 * Uwe Schulzweida, creator of cdo
-* Prince K Xavier, the dude who setup auto-completion for NCL and made me think about this 
-
+* Prince K Xavier, the dude who set up auto-completion for NCL and made me think about this 
+* Ralf Müller
 

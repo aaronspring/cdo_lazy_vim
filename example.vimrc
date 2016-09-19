@@ -157,16 +157,14 @@ if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
           endif
         endfor
 		
-		" varibale completion
-		if empty(s:vars_data)
-		  silent echo "no variable completion possible"
-		elseif s:vars_completion == 'ENABLE'
-		  " Find variable matches
-		  for l:line in s:vars_data
+	" varibale completion
+	if s:vars_completion == 'ENABLE'
+	  " Find variable matches
+	  for l:line in s:vars_data
           " Check if it matches what we're trying to complete
             if split(l:line)[1] =~ '^' . a:base
-            " It matches! See :help complete() for the full docs on the key names
-            " for this dict.
+              " It matches! See :help complete() for the full docs on the key names
+              " for this dict.
               call add(l:res, {
                 \ 'icase': 1,
                 \ 'word': split(l:line)[1],
@@ -175,7 +173,7 @@ if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
                 \ })
             endif
           endfor
-		endif 
+	endif 
 
         return res
       endif

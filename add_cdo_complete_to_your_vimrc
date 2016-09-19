@@ -80,9 +80,7 @@ if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
         endfor
 		
 		" varibale completion
-		if empty(s:vars_data)
-		  silent echo "no variable completion possible"
-		elseif s:vars_completion == 'ENABLE'
+		if s:vars_completion == 'ENABLE'
 		  " Find variable matches
 		  for l:line in s:vars_data
           " Check if it matches what we're trying to complete
@@ -107,4 +105,33 @@ if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
 else
   silent echo "if you want to use cdo completion, please change filename to *.sh or change your .vimrc"
 endif
+
+"++++++++++++++++++++++++++++++++++++
+"++++++++ Variable COMPLETION +++++++
+"++++++++++++++++++++++++++++++++++++
+" reads in all variables from certain datasets
+" by executing cdo vardes datasets and completes those if
+"  * you hit <C-X><C-U>
+"  * vars_completion is enabled
+"  * cdo is installed
+"  * ncl_completion or cdo_completion are enabled
+
+" 'ENABLE' variablecompletion or 'DISABLE'
+let s:vars_completion = 'ENABLE'
+
+" variable completion data gathering
+" set path for file to act cdo vardes on
+" CHANGE for your own data
+if s:vars_completion == 'ENABLE'
+  silent echo "vars completion enabled"
+  let s:vars_data_dir = '/work/mh1007/mpiesm1/experiments/lkm0101/outdata/'
+  let s:vars_data_strs = ['hamocc/lkm0101_hamocc_data_2d_mm_19990101_19991231.nc', 'mpiom/lkm0101_mpiom_data_2d_mm_19990101_19991231.nc', 'mpiom/lkm0101_mpiom_data_3d_mm_19990101_19991231.nc', 'hamocc/lkm0101_hamocc_data_3d_ym_19990101_19991231.nc' ]
+
+  let s:vars_data = []
+  for s:vars_data_str in s:vars_data_strs
+    let s:cdo_vardes_str = 'cdo vardes ' . s:vars_data_dir . s:vars_data_str
+    let s:vars_data += split(system(s:cdo_vardes_str), nr2char(10))
+  endfor
+endif
+
 

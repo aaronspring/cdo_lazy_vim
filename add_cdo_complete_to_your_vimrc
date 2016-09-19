@@ -22,8 +22,9 @@ if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
   let s:completion_language='cdo'
 
   " check for cdo version  
-  let s:cdo_version_data = system('which cdo | grep -o "cdo-[0-9].[0-9].[0-9]"')  
-  let s:cdo_version = s:cdo_version_data[4] . s:cdo_version_data[6] . s:cdo_version_data[8]
+  "let s:cdo_version_data = system('which cdo | grep -o "cdo-[0-9].[0-9].[0-9]"')  
+  let s:cdo_version_data = system('cdo --version 2>&1 | head -n 1 | grep -o "[0-9].[0-9].[0-9]"')
+  let s:cdo_version = s:cdo_version_data[0] . s:cdo_version_data[2] . s:cdo_version_data[4] 		" gets cdo version 1.7.2 as 170
   silent echo s:cdo_version
 
   " check if cdo version is capable of cdo --operator, so if version later than 1.7.1

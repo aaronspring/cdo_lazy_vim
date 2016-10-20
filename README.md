@@ -47,10 +47,11 @@ The current setting completes up to the last common string and then shows a menu
 <br>
 
 For syntax highlighting: <br>
-1. Copy the file ".vim/after/syntax/sh.vim" and make sure your ".vimrc" contains```
+1. Copy the file ".vim/after/syntax/sh.vim" and make sure your ".vimrc" contains
+```
 syntax on
 ``` 
-This works for '*.bash', '*.ksh' and '*.sh'-files.  
+This works for '*.bash', '*.ksh' and '*.sh'-files. If you want to use other shell file extensions, please rename according to the available file in "/usr/share/vim/vim74/syntax/".
 
 
 Operating instructions

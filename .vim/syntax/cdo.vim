@@ -1,11 +1,11 @@
 " Vim syntax File    
 " Language: CDO
 " Author:   Aaron Spring
-" Updated 2016/09/26
+" Updated 2016/10/20
 
-syn keyword cdoBUILTIN cdo add sub mul addc subc mulc 
+syn keyword cdoBUILTIN cdo  
 
-syn keyword cdoKeyword abs acos  adipot adisit aexpr aexprf after afterburner anomaly ap2pl ap2pl_lp
+syn keyword cdoKeyword abs acos add addc adipot adisit aexpr aexprf after afterburner anomaly ap2pl ap2pl_lp
 \   ap2plx ap2plx_lp asin atan atan2 bandpass beta boxavg cat cdiread cdiwrite change_e5lsm
 \    change_e5mask change_e5slm chcode chisquare chlevel chlevelc chlevelv chltype chname
 \    chparam chtabnum chunit chvar cloudlayer cmd cmor collgrid com command complextorect
@@ -38,7 +38,7 @@ syn keyword cdoKeyword abs acos  adipot adisit aexpr aexprf after afterburner an
 \    meravg merge mergegrid mergetime mermax mermean mermin merpctl merstd merstd1 mersum
 \    mervar mervar1 min ml2hl ml2hl_lp ml2hlx ml2hlx_lp ml2pl ml2pl_lp ml2plx ml2plx_lp
 \    mod monadd monavg moncount mondiv monlogs monmax monmean monmin monmul monpctl monstd
-\    monstd1 monsub monsum monvar monvar1 mrotuv mrotuvb  mulcoslat muldoy muldpm
+\    monstd1 monsub monsum monvar monvar1 mrotuv mrotuvb mul mulc mulcoslat muldoy muldpm
 \    muldpy ncode ncode ncopy ndate ne nec nint nlevel nmltest nmon normal npar ntime nvar
 \    nyear output outputarr outputbounds outputboundscpt outputcenter outputcenter2 outputcentercpt
 \    outputext outputf outputfld outputint outputkey outputsrv outputtab outputtri outputts
@@ -63,7 +63,7 @@ syn keyword cdoKeyword abs acos  adipot adisit aexpr aexprf after afterburner an
 \    sp2gpl sp2sp spartab spcut specinfo spectrum sperclogo splitcode splitday splitgrid
 \    splithour splitlevel splitmon splitname splitparam splitrec splitseas splitsel splittabnum
 \    splitvar splityear splityearmon splitzaxis sqr sqrt ssopar stdatm stimelogo strbre
-\    strgal strwin studentt  subtrend szip tan tee temp template1 template2 test
+\    strgal strwin studentt sub subc subtrend szip tan tee temp template1 template2 test
 \    test2 testcellsearch testdata testpointsearch thinout timavg timcor timcount timcovar
 \    timmax timmean timmin timpctl timselavg timselmax timselmean timselmin timselpctl timselstd
 \    timselstd1 timselsum timselvar timselvar1 timsort timstd timstd1 timsum timvar timvar1
@@ -108,6 +108,7 @@ syn match   cdoComment    "#.*"
 
 " pattern matching for placeholders
 syn region	cdoVariable 	start=+${+ end=+}+
+"syn region  cdoVariable     start=+regexdollarsign+  end=+regexspace+
 
 " pattern matching for strings
 syn region  cdoString		start=+"+  end=+"+
@@ -125,7 +126,7 @@ if version >= 508 || !exists("did_cdo_syn_inits")
   endif
 
   HiLink cdoBUILTIN     Function
-  HiLink cdoKeyword     Keyword
+  HiLink cdoKeyword     Function "Keyword
   HiLink cdoOperator    Operator
   HiLink cdoNumber		Number
   HiLink cdoComment		Comment

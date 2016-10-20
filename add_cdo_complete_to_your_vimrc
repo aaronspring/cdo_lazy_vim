@@ -1,3 +1,8 @@
+syntax on
+
+" format intendation in whole document with "gg=G" or single line with "gg"
+filetype plugin indent on
+
 "++++++++++++++++++++++++++++++++++++
 "++++++++++ CDO COMPLETION ++++++++++
 "++++++++++++++++++++++++++++++++++++
@@ -6,7 +11,7 @@
 "  * you hit <C-X><C-U>
 "  * cdo_completion is enabled
 "  * cdo_version is later than 1.7.1
-"  * filename extension is 'sh'
+"  * filename extension is 'sh', should also work for ksh and bash, if not change the repositories filename .vim/after/syntax/sh.vim accordingly 
 "
 " also a variable completion for your most-used files is done if
 "  * filepath of those datasets is  set
@@ -101,9 +106,9 @@ if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
       endif
     endfun
   endif "for check cdo_version > 1.7.1
-" if filename is not *.sh  
+" if filename is not *sh, eg. .bash, .sh, .ksh 
 else
-  silent echo "if you want to use cdo completion, please change filename to *.sh or change your .vimrc"
+  silent echo "if you want to use cdo completion, please change filename to *sh or change your .vimrc"
 endif
 
 "++++++++++++++++++++++++++++++++++++

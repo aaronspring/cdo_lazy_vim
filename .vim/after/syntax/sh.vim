@@ -85,35 +85,6 @@ syn keyword cdoKeyword abs acos add addc adipot adisit aexpr aexprf after afterb
 \    zonstd zonstd1 zonsum zonvar zonvar1
   
 
-" match brackets
-syn match cdoOperator "(/"
-syn match cdoOperator "\/)"
-syn match cdoOperator "\\"
-syn match cdoOperator "{"
-syn match cdoOperator "\}"
-
-
-" cdo numbers (ripped off from  fortran.vim)
-syn match cdoNumber	display "\<\d\+\(_\a\w*\)\=\>"
-syn match cdoNumber	display	"\<\d\+[deq][-+]\=\d\+\(_\a\w*\)\=\>"
-syn match cdoNumber	display	"\.\d\+\([deq][-+]\=\d\+\)\=\(_\a\w*\)\=\>"
-syn match cdoNumber	display	"\<\d\+\.\([deq][-+]\=\d\+\)\=\(_\a\w*\)\=\>"
-syn match cdoNumber	display	"\<\d\+\.\d\+\([dq][-+]\=\d\+\)\=\(_\a\w*\)\=\>"
-syn match cdoNumber	display	"\<\d\+\.\d\+\(e[-+]\=\d\+\)\=\(_\a\w*\)\=\>"
-
-
-" pattern matching for comments
-syn match   cdoComment	"^\ *#.*$"
-syn match   cdoComment    "#.*"
-
-" pattern matching for placeholders
-syn region	cdoVariable 	start=+${+ end=+}+
-"syn region  cdoVariable     start=+regexdollarsign+  end=+regexspace+
-
-" pattern matching for strings
-syn region  cdoString		start=+"+  end=+"+
-syn region  cdoString		start=+'+  end=+'+
-
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
@@ -126,12 +97,7 @@ if version >= 508 || !exists("did_cdo_syn_inits")
   endif
 
   HiLink cdoBUILTIN     Function
-  HiLink cdoKeyword     Function "Keyword
-  HiLink cdoOperator    Operator
-  HiLink cdoNumber		Number
-  HiLink cdoComment		Comment
-  HiLink cdoString		String
-  HiLink cdoVariable	Function
+  HiLink cdoKeyword     Function  
 
   delcommand HiLink
 endif

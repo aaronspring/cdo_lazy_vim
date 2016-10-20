@@ -1,12 +1,7 @@
-" +++++++++++ SYNTAX ++++++++++++++
-au BufRead,BufNewFile *.sh set filetype=cdo
-au! Syntax newlang source $VIM/cdo.vim 
 syntax on
 
+" format intendation in whole document with "gg=G" or single line with "gg"
 filetype plugin indent on
-
-" general completion options
-set completeopt=longest,menu
 
 " autointend
 set ai
@@ -15,7 +10,7 @@ set ru
 set showmatch
 
 "tab = 4 spaces
-set tabstop=4
+set tabstop=2
 
 " autocompletion for file
 set autochdir

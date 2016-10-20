@@ -47,7 +47,10 @@ The current setting completes up to the last common string and then shows a menu
 <br>
 
 For syntax highlighting: <br>
-1. coming soon <br>
+1. Copy the file ".vim/after/syntax/sh.vim" and make sure your ".vimrc" contains```
+syntax on
+``` 
+This works for '*.bash', '*.ksh' and '*.sh'-files.  
 
 
 Operating instructions
@@ -92,6 +95,7 @@ Changelog
 * v0.1: basic auto-complete function based on cdoCompletion.bash as of 2016/09/06
 * v0.2: some MPI-ESM variables included for HAMOCC: 2d, 3d and sediment; MPIOM: 2d, 3d and ECHAM6: BOT, LOG, ...; checkout  this repositories ".vim/dictionary"
 * v1.0: completly new approach: uses all 'cdo --operators' listings installed on your machine, requires cdo-1.7.1 or later, also completes variables gathered by 'cdo vardes files', requires '*.sh' files, variable_completion and cdo_completion can be enabled or disabled in .vimrc 
+* v1.1 syntax included: is applied after the current '?sh' syntax, so cdoKeywords are included
 
 Working on
 ----------

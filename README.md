@@ -1,26 +1,24 @@
 in progress...
 
-ncl_lazy_vim README
+CDO_lazy_vim README
 ===================
 
-If you are using vi/vim/gvim for scripting with NCL, you can sometimes hardly remember NCL commands or you are just too lazy to type out "gsFillWTF..." all the time, this might be something for you.
+If you are using vi/vim/gvim for scripting with cdo, you can sometimes hardly remember cdo commands or you are just too lazy to type out "sellonlatbox" all the time, this might be something for you.
 
-![animation]( ncl_completion.gif )
+![animation]( cdo_completion.gif )
 
 Configuration instructions
 --------------------------
-1. Download the two .txt files "NCL_functions.txt" and "NCL_resources.txt" from the ".vim" folder in this repository into your ".vim" folder
-2. Add the lines of "add_ncl_complete_to_your_vimrc" to your "~/.vimrc" to include the complete function <br>
+
+* Add the lines of "add_cdo_complete_to_your_vimrc" to your "~/.vimrc" to include the complete function <br>
 ```
-cat add_ncl_complete_to_your_vimrc >> ~/.vimrc
+cat add_cdo_complete_to_your_vimrc >> ~/.vimrc
 ```
-If you don't have a .vimrc file yet, you may also just my working example "example.vimrc" and rename it in your $HOME <br>
 
 Optional: <br>
-1. Variable completion: Set a file path and 'ENABLE' vars_completion in your ".vimrc" <br> - requires CDO - if you have a neat idea how to implement it with NCL commands please approach me
+1. Variable completion: Set a file path and 'ENABLE' vars_completion in your ".vimrc" <br>
 ![animation]( vars_completion.gif ) <br>
-2. For now, the first 12 (random number) words of NCL Resources are displayed in the pop-up window before the last two words as "Default information" separated by "...". If you usually work on a wide vi window, you can modify this number of strings.
-3. If you want to use &lt;Tab> for auto-completion like in your shell, add those lines to your .vimrc <br> FIXME: Doesnt replace &lt;C-U>&lt;C-U> yet, but only &lt;C-N> - should replace &lt;C-X><lt;C-U> for initial hit, &lt;C-U> or &lt;C-N> for others and <lt;Tab> if no string before 
+2. If you want to use &lt;Tab> for auto-completion like in your shell, add those lines to your .vimrc <br> FIXME: Doesnt replace <C-U><C-U> yet, but only <C-N>
 ```
 " Use TAB to complete when typing words, else inserts TABs as usual.
 " Uses dictionary and source files to find matching words to complete.
@@ -40,7 +38,7 @@ endfunction
 ```
 Source: http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion <br>
 The usual &lt;Tab> command will still be executed when no completion is feasable, eg. in the beginning of (empty) lines <br>
-4. If you fancy other auto-completion setting, play with the line
+3. If you fancy other auto-completion setting, play with the line
 ```
 set complete=longest,menuone
 ```
@@ -49,32 +47,30 @@ The current setting completes up to the last common string and then shows a menu
 <br>
 
 For syntax highlighting: <br>
-1. coming soon dynamical hopefully <br> for now data from https://www.ncl.ucar.edu/Applications/editor.shtml
+1. Copy the file ".vim/after/syntax/sh.vim" and make sure your ".vimrc" contains
+```
+syntax on
+``` 
+This works for '*.bash', '*.ksh' and '*.sh'-files. If you want to use other shell file extensions, please rename according to the available file in "/usr/share/vim/vim74/syntax/".
 
 
 Operating instructions
 ----------------------
-Start typing your desired cdo command and hit &lt;Control-X>&lt;Control-U>
+Start typing your desired cdo command and hit &lt;Ctrl-X>&lt;Ctrl-U>
 ```
-res@gsF<Ctrl-X><Ctrl-U>
-addf<Ctrl-X><Ctrl-U>
+cdo sell<Ctrl-X><Ctrl-U>
 ```
 Get the following autocompletion options 
 ```
-gsFillBackgroundColor   NCL Res: This resource of type ... Default: Transparent
-gsFillColor             NCL Res: This resource of type ... Default: Foreground
-or
-addfile                 NCL Func.: 
-addfiles                NCL Func.:
-or
-<ncl_command>           <type>: <description>         ... Default: <value>
+sellevel                sellevel description
+sellevidx               sellevidx description
+sellonlatbox            sellonlatbox description
+selltype                selltype description
 ...
 ```
 Hit &lt;Ctrl-N> go get the first shown match
 ```
-res@gsFillBackgroundColor
-or
-addfile
+cdo sellevel
 ```
 Hit another &lt;Ctrl-N> to choose the next match or move down with arrow keys and hit <Enter> for your choice 
 
@@ -82,12 +78,12 @@ Hit another &lt;Ctrl-N> to choose the next match or move down with arrow keys an
 
 Copyright and licensing information
 -----------------------------------
-* helpme
+* MIT license
 
 Known bugs
 ----------
 * just starting
-* static ncl data
+* static syntax list
 
 Contact information
 -------------------
@@ -97,23 +93,25 @@ Looking forward to receiving your questions, comments or wishes
 
 Changelog
 ---------
-* v0.1: 
-uses all NCL resources and NCL functions from website as of 2016/09/18 <br>
-also completes variables gathered by 'cdo vardes files' if cdo installed and vars_completion enabled <br>
-requires '*.ncl' files <br>
-ncl_completion can be enabled or disabled in .vimrc <br> 
+* v0.1: basic auto-complete function based on cdoCompletion.bash as of 2016/09/06
+* v0.2: some MPI-ESM variables included for HAMOCC: 2d, 3d and sediment; MPIOM: 2d, 3d and ECHAM6: BOT, LOG, ...; checkout  this repositories ".vim/dictionary"
+* v1.0: completly new approach: uses all 'cdo --operators' listings installed on your machine, requires cdo-1.7.1 or later, also completes variables gathered by 'cdo vardes files', requires '*.sh' files, variable_completion and cdo_completion can be enabled or disabled in .vimrc 
+* v1.1 syntax included: is applied after the current '?sh' syntax, so cdoKeywords are included
+* v1.2 filename *sh requirement taken out
 
 Working on
 ----------
-* syntax highlighting
-* getting functions and resources dynamically, see example uses 'cdo --operators' https://github.com/aaronspring/cdo_lazy_vim
+* proper syntax highlighting
 * anything else needed?
 
 Credits and acknowledgements
 ----------------------------
-* Prince K Xavier, the dude who set up auto-completion for NCL and made me think to do this for CDO first and now I'm back to NCL
+* Uwe Schulzweida, creator of cdo
+* Prince K Xavier, the dude who set up auto-completion for NCL and made me think about this 
+* Ralf Müller
  
 
 Sister project
 --------------
-* same stuff for CDO: https://github.com/aaronspring/cdo_lazy_vim
+* similar stuff for NCL: https://github.com/aaronspring/ncl_lazy_vim
+

@@ -1,8 +1,3 @@
-syntax on
-
-" format intendation in whole document with "gg=G" or single line with "gg"
-filetype plugin indent on
-
 "++++++++++++++++++++++++++++++++++++
 "++++++++++ CDO COMPLETION ++++++++++
 "++++++++++++++++++++++++++++++++++++
@@ -10,12 +5,11 @@ filetype plugin indent on
 " by executing cdo --operator and completes those if
 "  * you hit <C-X><C-U>
 "  * cdo_completion is enabled
-"  * cdo_version is later than 1.7.1
-"  * filename extension is 'sh', should also work for ksh and bash, if not change the repositories filename .vim/after/syntax/sh.vim accordingly 
+"  * cdo_version is later than 1.7.1 
 "
 " also a variable completion for your most-used files is done if
-"  * filepath of those datasets is  set
-"  * vars completion is enabled
+"  * filepath of those datasets is set
+"  * vars completion is 'ENABLE'd
 
 
 " 'ENABLE' cdo completion or 'DISABLE'
@@ -23,17 +17,16 @@ let s:cdo_completion = 'ENABLE'
 
 " cdo completion
 " if filename ends with 'sh' use cdo completion
-if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
+if s:cdo_completion == 'ENABLE'
   let s:completion_language='cdo'
 
   " check for cdo version  
-  "let s:cdo_version_data = system('which cdo | grep -o "cdo-[0-9].[0-9].[0-9]"')  
   let s:cdo_version_data = system('cdo --version 2>&1 | head -n 1 | grep -o "[0-9].[0-9].[0-9]"')
-  let s:cdo_version = s:cdo_version_data[0] . s:cdo_version_data[2] . s:cdo_version_data[4] 		" gets cdo version 1.7.2 as 170
+  let s:cdo_version = s:cdo_version_data[0] . s:cdo_version_data[2] . s:cdo_version_data[4] " gets cdo version 1.7.2 as 170
   silent echo s:cdo_version
 
   " check if cdo version is capable of cdo --operator, so if version later than 1.7.1
-  if s:cdo_version <=170 && s:cdo_completion == 'ENABLE'
+  if s:cdo_version <=170 
     echo "need to update to cdo 1.7.1 or later to use vim autocompletion for cdo"
 	let s:cdo_completion = 'DISABLE'
   elseif s:cdo_version == ''
@@ -54,7 +47,7 @@ if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
 	
     set completefunc=CDOComplete
     " modify completition options, more info in :help completeopt or 
-	" http://vimdoc.sourceforge.net/htmldoc/options.html#'completeopt' 
+    " http://vimdoc.sourceforge.net/htmldoc/options.html#'completeopt' 
     set completeopt=longest,menu
    
     " to be executed by user by C-X C-U
@@ -84,10 +77,10 @@ if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
           endif
         endfor
 		
-		" varibale completion
-		if s:vars_completion == 'ENABLE'
-		  " Find variable matches
-		  for l:line in s:vars_data
+	" varibale completion
+	if s:vars_completion == 'ENABLE'
+	  " Find variable matches
+	  for l:line in s:vars_data
           " Check if it matches what we're trying to complete
             if split(l:line)[1] =~ '^' . a:base
             " It matches! See :help complete() for the full docs on the key names
@@ -100,15 +93,12 @@ if bufname("%")[-2:] == 'sh' && s:cdo_completion == 'ENABLE'
                 \ })
             endif
           endfor
-		endif 
+	endif 
 
         return res
       endif
     endfun
   endif "for check cdo_version > 1.7.1
-" if filename is not *sh, eg. .bash, .sh, .ksh 
-else
-  silent echo "if you want to use cdo completion, please change filename to *sh or change your .vimrc"
 endif
 
 "++++++++++++++++++++++++++++++++++++

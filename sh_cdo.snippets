@@ -1,0 +1,36 @@
+# cdos
+snippet cdo
+	cdo -${1:operator} ${2:ifiles} ${3:ofile}
+
+snippet echam
+	cdo -f nc -t echam6 ${1:ifile}.grb ${2:ofile}.nc
+
+snippet sellonlatbox
+	-sellonlatbox,${1:lon1},${2:lon2},${3:lat1},${4:lat2} 
+
+snippet setclonlatbox
+	-setclonlatbox,${1:c},${2:lon1},${3:lon2},${4:lat1},${5:lat2} 
+
+snippet selindexbox
+	-selindexbox,${1:idx1},${2:idx2},${3:idy1},${4:idy2} 
+
+snippet selcindexbox
+	-selcindexbox,${1:c},${2:idx1},${3:idx2},${4:idy1},${5:idy2} 
+
+snippet masklonlatbox
+	-masklonlatbox,${1:lon1},${2:lon2},${3:lat1},${4:lat2} 
+
+snippet maskindexbox
+	-maskindexbox,${1:idx1},${2:idx2},${3:idy1},${4:idy2} 
+
+snippet seldate
+	-seldate,${1:YYYY}-${2:MM}-${3:DD},${4:YYYY_2},${5:MM_2},${6:DD_2}
+
+snippet expr
+	-expr,'${1:var1}=${2:formula1}' ${3:ifile} ${4:ofile}
+
+snippet outputtab
+	outputtab,value,name,param,code,timestep,date,lon,lat,lev,xind,yind
+
+snippet sethalo
+	-sethalo,${1:lhalo},${2:rhalo}

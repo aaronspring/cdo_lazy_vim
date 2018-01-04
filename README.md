@@ -1,5 +1,3 @@
-in progress...
-
 CDO_lazy_vim README
 ===================
 
@@ -101,7 +99,6 @@ Changelog
 
 Working on
 ----------
-* proper syntax highlighting
 * anything else needed?
 
 Credits and acknowledgements

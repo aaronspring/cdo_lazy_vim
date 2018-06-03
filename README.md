@@ -80,12 +80,11 @@ Copyright and licensing information
 
 Known bugs
 ----------
-* just starting
-* static syntax list
+* ?
 
 Contact information
 -------------------
-Aaron Spring <br> Bundesstraße 53 <br> ZMAW Room 229 <br> aaron.spring@mpimet.mpg.de <br> <br> 
+Aaron Spring <br> Bundesstraße 53 <br> ZMAW Room 122 <br> aaron.spring@mpimet.mpg.de <br> <br> 
 Looking forward to receiving your questions, comments or wishes
 
 
@@ -96,6 +95,7 @@ Changelog
 * v1.0: completly new approach: uses all 'cdo --operators' listings installed on your machine, requires cdo-1.7.1 or later, also completes variables gathered by 'cdo vardes files', requires '*.sh' files, variable_completion and cdo_completion can be enabled or disabled in .vimrc 
 * v1.1 syntax included: is applied after the current '?sh' syntax, so cdoKeywords are included
 * v1.2 filename *sh requirement taken out
+* v1.3 [3.6.2018] changed cdo --operator to cdo --operators; --operator only lists a few, --operators all; now compatible with cdo-1.9.2
 
 Working on
 ----------

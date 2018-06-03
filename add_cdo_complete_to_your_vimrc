@@ -39,10 +39,10 @@ if s:cdo_completion == 'ENABLE'
  
     "cdo does --operators
     "get cdo operators from your cdo version
-    let s:cdo_data = split(system('cdo --operator'), nr2char(10))
+    let s:cdo_data = split(system('cdo --operators'), nr2char(10))
     " check if list has entries
     if empty(s:cdo_data)
-  	  echo "ERROR:List from 'cdo --operator' is empty"
+  	  echo "ERROR:List from 'cdo --operators' is empty"
     endif
 	
     set completefunc=CDOComplete
